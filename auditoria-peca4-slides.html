@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Apresentação — Auditoria Sabor do Sul Pizzas</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Arial,sans-serif; background:#ccc; color:#111; }
+.slide { width:960px; min-height:540px; margin:28px auto; background:#fff; position:relative; box-shadow:0 4px 20px rgba(0,0,0,0.2); display:flex; flex-direction:column; border:1px solid #bbb; }
+.slide-dark { background:#111; color:#fff; }
+.slide-num { position:absolute; bottom:16px; right:22px; font-size:10px; font-weight:700; letter-spacing:2px; opacity:0.3; color:#111; }
+.slide-dark .slide-num { color:#fff; }
+.slide-header { background:#111; padding:24px 48px; flex-shrink:0; }
+.slide-header .label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:3px; color:#888; margin-bottom:4px; }
+.slide-header h2 { font-size:20px; font-weight:800; color:#fff; line-height:1.2; }
+.slide-content { flex:1; padding:28px 48px 50px; }
+
+/* CAPA */
+.s1-inner { flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:60px; }
+.s1-inner .logo { font-size:16px; font-weight:900; letter-spacing:4px; text-transform:uppercase; color:#fff; margin-bottom:4px; }
+.s1-inner .logo-sub { font-size:10px; color:#888; letter-spacing:3px; text-transform:uppercase; margin-bottom:48px; }
+.s1-inner h1 { font-size:36px; font-weight:900; line-height:1.15; color:#fff; margin-bottom:8px; }
+.s1-inner .empresa { font-size:18px; color:#aaa; font-weight:300; margin-bottom:48px; letter-spacing:1px; }
+.s1-inner .line { width:40px; height:1px; background:#555; margin:16px auto; }
+.s1-inner .team { font-size:12px; color:#777; line-height:2.2; letter-spacing:1px; }
+
+/* GRIDS */
+.info-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:8px; }
+.info-card { background:#f7f7f7; padding:14px; border-left:2px solid #111; }
+.info-card .ic-label { font-size:9px; text-transform:uppercase; letter-spacing:2px; color:#999; font-weight:700; margin-bottom:4px; }
+.info-card .ic-val { font-size:16px; font-weight:800; }
+.info-card .ic-sub { font-size:11px; color:#888; margin-top:2px; }
+.facts { margin-top:14px; display:flex; flex-direction:column; gap:8px; }
+.fact-row { display:flex; align-items:flex-start; gap:12px; padding:9px 12px; background:#f7f7f7; font-size:13px; color:#444; line-height:1.4; }
+.fact-dot { min-width:6px; height:6px; background:#111; border-radius:50%; margin-top:5px; }
+
+/* TABELA */
+table.slide-table { width:100%; border-collapse:collapse; font-size:12px; margin-top:10px; }
+.slide-table thead { background:#111; color:#fff; }
+.slide-table thead th { padding:9px 12px; text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:1px; font-weight:700; }
+.slide-table tbody td { padding:9px 12px; border-bottom:1px solid #eee; color:#444; vertical-align:top; line-height:1.4; }
+.slide-table tbody tr:nth-child(even) { background:#fafafa; }
+.nota-m { font-weight:800; color:#555; }
+.nota-b { font-weight:800; color:#111; }
+
+/* 2 COLS */
+.two-cols { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:8px; }
+.col-box { border:1px solid #ddd; border-top:2px solid #111; padding:16px; }
+.col-box h4 { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:12px; color:#111; }
+.col-item { display:flex; gap:8px; margin-bottom:8px; font-size:12px; color:#444; align-items:flex-start; line-height:1.4; }
+.col-dot { min-width:6px; height:6px; background:#111; border-radius:50%; margin-top:4px; flex-shrink:0; }
+
+/* ALERT */
+.alert-box { border-left:2px solid #111; background:#f7f7f7; padding:11px 14px; margin-top:12px; font-size:12px; color:#555; line-height:1.6; }
+
+/* MATRIZ */
+.matrix-mini { border-collapse:collapse; width:100%; font-size:11px; margin-top:8px; }
+.matrix-mini th,.matrix-mini td { border:1px solid #ccc; padding:7px; text-align:center; vertical-align:middle; }
+.matrix-mini th { background:#111; color:#fff; font-size:10px; text-transform:uppercase; letter-spacing:1px; }
+.risk-c { background:#111; color:#fff; padding:2px 6px; font-size:9px; font-weight:700; display:inline-block; margin:2px; letter-spacing:1px; }
+.risk-a { background:#555; color:#fff; padding:2px 6px; font-size:9px; font-weight:700; display:inline-block; margin:2px; letter-spacing:1px; }
+.risk-m { background:#ccc; color:#111; padding:2px 6px; font-size:9px; font-weight:700; display:inline-block; margin:2px; letter-spacing:1px; }
+
+/* RECOMENDACOES */
+.rec-list { margin-top:8px; display:flex; flex-direction:column; gap:7px; }
+.rec-slide { border-left:2px solid #111; padding:10px 14px; background:#f7f7f7; }
+.rec-slide .rn { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#999; margin-bottom:2px; }
+.rec-slide .rp { font-size:13px; font-weight:700; margin-bottom:2px; }
+.rec-slide .rs { font-size:11px; color:#555; line-height:1.4; }
+.rec-slide .rt { font-size:10px; font-weight:700; letter-spacing:1px; color:#111; margin-top:3px; text-transform:uppercase; }
+
+/* 3 COLS FORTES */
+.tres-cols { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:12px; }
+.forte-card { border:1px solid #ddd; border-top:2px solid #111; padding:22px 18px; text-align:center; }
+.forte-num { font-size:28px; font-weight:900; color:#eee; margin-bottom:8px; }
+.forte-titulo { font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+.forte-texto { font-size:12px; color:#555; line-height:1.5; }
+
+/* NOTA FINAL */
+.final-inner { flex:1; display:flex; align-items:center; gap:60px; padding:40px 60px; }
+.final-score-box { text-align:center; flex-shrink:0; }
+.final-num { font-size:90px; font-weight:900; line-height:1; color:#fff; }
+.final-den { font-size:28px; color:#555; font-weight:300; }
+.final-label { font-size:10px; color:#888; text-transform:uppercase; letter-spacing:2px; margin-top:8px; }
+.final-selo { display:inline-block; margin-top:14px; border:1px solid #555; color:#ccc; font-size:10px; font-weight:700; padding:5px 14px; letter-spacing:2px; text-transform:uppercase; }
+.final-bars { flex:1; }
+.bar-big-row { margin-bottom:20px; }
+.bar-big-label { font-size:13px; font-weight:700; color:#fff; margin-bottom:7px; display:flex; justify-content:space-between; }
+.bar-big-track { background:#333; height:6px; }
+.bar-big-fill { height:6px; background:#fff; }
+.final-risks { margin-top:24px; font-size:12px; color:#888; line-height:2.2; letter-spacing:1px; }
+
+/* REFLEXAO */
+.reflexao-inner { flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:48px 64px; gap:20px; }
+.reflexao-inner .question { font-size:20px; font-weight:800; line-height:1.4; max-width:700px; }
+.reflexao-inner .answer { font-size:13px; color:#555; max-width:650px; line-height:1.9; }
+.reflexao-inner .frase-final { font-size:16px; font-weight:800; border-top:2px solid #111; border-bottom:2px solid #111; padding:14px 0; width:100%; }
+.reflexao-inner .creditos { font-size:11px; color:#aaa; letter-spacing:1px; }
+
+@media print { body{background:#fff} .slide{page-break-after:always;margin:0;width:100%;box-shadow:none;border:none} }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 CAPA -->
+<div class="slide slide-dark">
+  <div class="s1-inner">
+    <div class="logo">AppCheck</div>
+    <div class="logo-sub">Consultoria Digital</div>
+    <h1>Auditoria Digital<br>Sabor do Sul Pizzas</h1>
+    <div class="line"></div>
+    <div class="empresa">Omnichannel · LGPD · Segurança e Desempenho</div>
+    <div class="team">Guilherme Argollo — Experiência e Integração Omnichannel<br>João Pedro Menezes — Privacidade e LGPD<br>Elô — Segurança e Desempenho Técnico<br>Abril de 2026</div>
+  </div>
+  <div class="slide-num">01 / 10</div>
+</div>
+
+<!-- SLIDE 2 CONTEXTO -->
+<div class="slide">
+  <div class="slide-header"><div class="label">Slide 02 — Contexto</div><h2>Quem é a Sabor do Sul Pizzas — e por que a escolhemos</h2></div>
+  <div class="slide-content">
+    <div class="info-grid">
+      <div class="info-card"><div class="ic-label">Segmento</div><div class="ic-val">Pizzaria</div><div class="ic-sub">Rede regional de gastronomia</div></div>
+      <div class="info-card"><div class="ic-label">Lojas Físicas</div><div class="ic-val">8 unidades</div><div class="ic-sub">Bahia, Alagoas e Rio Grande do Sul</div></div>
+      <div class="info-card"><div class="ic-label">App — Versão</div><div class="ic-val">10.9.8</div><div class="ic-sub">iOS 4.4/5 · 78 avaliações · Plataforma Neemo</div></div>
+    </div>
+    <div class="facts">
+      <div class="fact-row"><div class="fact-dot"></div>Atende os três critérios da atividade: loja física acessível, app oficial nas lojas de aplicativos e trata dados pessoais de clientes</div>
+      <div class="fact-row"><div class="fact-dot"></div>Escolhemos a empresa por ser uma rede regional em crescimento — um segmento que costuma ter o digital ainda em desenvolvimento, tornando a auditoria mais rica em achados</div>
+      <div class="fact-row"><div class="fact-dot"></div>Persona utilizada na visita: jovem de 22 anos fazendo o primeiro pedido pelo app, sem experiência prévia com a marca</div>
+    </div>
+  </div>
+  <div class="slide-num">02 / 10</div>
+</div>
+
+<!-- SLIDE 3 METODOLOGIA -->
+<div class="slide">
+  <div class="slide-header"><div class="label">Slide 03 — Metodologia</div><h2>Como conduzimos a auditoria</h2></div>
+  <div class="slide-content">
+    <div class="two-cols">
+      <div class="col-box">
+        <h4>O que fizemos</h4>
+        <div class="col-item"><div class="col-dot"></div>Instalamos o app em dispositivos iOS e Android</div>
+        <div class="col-item"><div class="col-dot"></div>Lemos 78 avaliações na App Store e 20 no Google Play</div>
+        <div class="col-item"><div class="col-dot"></div>Analisamos a política de privacidade do site oficial</div>
+        <div class="col-item"><div class="col-dot"></div>Pesquisamos histórico de incidentes no Google e na ANPD</div>
+        <div class="col-item"><div class="col-dot"></div>Fizemos visita de campo como mystery shoppers</div>
+        <div class="col-item"><div class="col-dot"></div>Cronometramos o cadastro e simulamos um pedido completo</div>
+        <div class="col-item"><div class="col-dot"></div>Conversamos com um funcionário da loja durante a visita</div>
+      </div>
+      <div class="col-box">
+        <h4>O que nos surpreendeu</h4>
+        <div class="col-item"><div class="col-dot"></div>O funcionário que abordamos não sabia que o app existia</div>
+        <div class="col-item"><div class="col-dot"></div>Nenhum QR Code ou comunicação sobre o app na loja</div>
+        <div class="col-item"><div class="col-dot"></div>O WhatsApp exibido no app não respondeu nossas mensagens</div>
+        <div class="col-item"><div class="col-dot"></div>Classificação A16 (álcool/drogas) em um app de pizzaria</div>
+        <div class="col-item"><div class="col-dot"></div>Política de privacidade hospedada em link do Google Docs, sem atualização desde 2020</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">03 / 10</div>
+</div>
+
+<!-- SLIDE 4 BLOCO A -->
+<div class="slide">
+  <div class="slide-header"><div class="label">Slide 04 — Bloco A · Guilherme Argollo</div><h2>Experiência e Integração Omnichannel · Nota: 5.0/10</h2></div>
+  <div class="slide-content">
+    <table class="slide-table">
+      <thead><tr><th>Critério</th><th>O que observamos na prática</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td>Download e instalação</td><td>Fácil de encontrar e instalar. Nota 4.4/5 — elogios são para a pizza, não para o app.</td><td class="nota-m">7/10</td></tr>
+        <tr><td>Integração com a loja física</td><td>Nenhum QR Code, banner ou cupom exclusivo. O funcionário não sabia que o app existia.</td><td class="nota-b">3/10</td></tr>
+        <tr><td>Usabilidade e design</td><td>Interface funcional, mas básica. Travou duas vezes durante nosso teste.</td><td class="nota-m">5/10</td></tr>
+        <tr><td>Funcionalidades exclusivas</td><td>Só pedido e notificação por e-mail. Sem fidelidade, rastreio em tempo real ou chat.</td><td class="nota-b">4/10</td></tr>
+        <tr><td>Custo-benefício</td><td>Gratuito, mas o WhatsApp listado no app não respondeu. Relatos de pedidos errados nas avaliações.</td><td class="nota-m">6/10</td></tr>
+      </tbody>
+    </table>
+    <div class="alert-box"><strong>Principal achado:</strong> O digital e o físico funcionam como dois mundos separados. Não existe nenhuma ponte entre o app e a experiência dentro da loja — o omnichannel, na prática, não existe.</div>
+  </div>
+  <div class="slide-num">04 / 10</div>
+</div>
+
+<!-- SLIDE 5 BLOCO B -->
+<div class="slide">
+  <div class="slide-header"><div class="label">Slide 05 — Bloco B · João Pedro Menezes</div><h2>LGPD e Privacidade · Nota: 3.4/10 · Matriz de Risco</h2></div>
+  <div class="slide-content" style="padding-top:20px;">
+    <div class="two-cols">
+      <div>
+        <table class="slide-table">
+          <thead><tr><th>Critério</th><th>Nota</th></tr></thead>
+          <tbody>
+            <tr><td>Política de privacidade</td><td class="nota-b">4/10</td></tr>
+            <tr><td>Encarregado (DPO)</td><td class="nota-b">3/10</td></tr>
+            <tr><td>Minimização de dados</td><td class="nota-b">4/10</td></tr>
+            <tr><td>Consentimento</td><td class="nota-b">4/10</td></tr>
+            <tr><td><strong>Permissões do app</strong></td><td class="nota-b"><strong>2/10</strong></td></tr>
+            <tr><td>Direitos do titular</td><td class="nota-m">5/10</td></tr>
+            <tr><td>Cookies e rastreadores</td><td class="nota-b">3/10</td></tr>
+            <tr><td>Bases legais</td><td class="nota-b">3/10</td></tr>
+            <tr><td><strong>Dados de menores</strong></td><td class="nota-b"><strong>2/10</strong></td></tr>
+            <tr><td>Transparência compart.</td><td class="nota-b">4/10</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table class="matrix-mini">
+          <thead><tr><th></th><th>Baixo</th><th>Médio</th><th>Alto</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Alta</strong></td><td><span class="risk-m">Cookies</span></td><td><span class="risk-a">Política 2020</span><br><span class="risk-a">DPO Gmail</span><br><span class="risk-a">Bases vagas</span></td><td><span class="risk-c">App Store vs. Política</span></td></tr>
+            <tr><td><strong>Média</strong></td><td></td><td></td><td><span class="risk-c">Sem proteção menores</span></td></tr>
+            <tr><td><strong>Baixa</strong></td><td></td><td><span class="risk-m">Transfer. internac.</span></td><td></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px;font-size:10px;color:#777;line-height:2.2;letter-spacing:1px;">
+          <span class="risk-c">CRÍTICO</span> Risco de sanção ANPD<br>
+          <span class="risk-a">ALTO</span> Correção imediata<br>
+          <span class="risk-m">MÉDIO</span> Melhoria recomendada
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">05 / 10</div>
+</div>
+
+<!-- SLIDE 6 BLOCO C -->
+<div class="slide">
+  <div class="slide-header"><div class="label">Slide 06 — Bloco C · Elô</div><h2>Segurança e Desempenho Técnico · Nota: 4.2/10</h2></div>
+  <div class="slide-content">
+    <table class="slide-table">
+      <thead><tr><th>Critério</th><th>O que observamos</th><th>Nota</th></tr></thead>
+      <tbody>
+        <tr><td>Autenticação</td><td>Login com e-mail e senha. Sem 2FA, sem login via Google ou Apple. Sem política de força de senha.</td><td class="nota-m">5/10</td></tr>
+        <tr><td>Estabilidade</td><td>App travou uma vez durante o teste. Nas avaliações, fechamentos inesperados reportados em iOS e Android.</td><td class="nota-b">4/10</td></tr>
+        <tr><td>Desempenho</td><td>Cardápio demora para carregar. Relatos de travamento na hora de finalizar o pedido — o pior momento.</td><td class="nota-b">4/10</td></tr>
+        <tr><td>Atualizações</td><td>Última nota de versão: "Correção de push!" — sem descrição do que foi alterado ou corrigido.</td><td class="nota-b">4/10</td></tr>
+        <tr><td>Avaliações técnicas</td><td>Problemas recorrentes: WhatsApp sem resposta, pedidos com sabores errados, espera acima de 2h sem atualização.</td><td class="nota-b">4/10</td></tr>
+      </tbody>
+    </table>
+    <div class="alert-box"><strong>Contexto importante:</strong> O app é desenvolvido pela plataforma terceirizada Neemo. A empresa não tem controle direto sobre o código — cada correção depende de um fornecedor externo.</div>
+  </div>
+  <div class="slide-num">06 / 10</div>
+</div>
+
+<!-- SLIDE 7 PONTOS FORTES -->
+<div class="slide">
+  <div class="slide-header"><div class="label">Slide 07 — Pontos Fortes</div><h2>O que a empresa acerta — e pode usar como base para melhorar</h2></div>
+  <div class="slide-content" style="display:flex;align-items:center;">
+    <div class="tres-cols" style="width:100%;">
+      <div class="forte-card"><div class="forte-num">01</div><div class="forte-titulo">App Gratuito e Acessível</div><div class="forte-texto">Fácil de instalar em iOS e Android. Nota 4.4/5 — o produto agrada. O desafio é fazer o app agradar tanto quanto a pizza.</div></div>
+      <div class="forte-card"><div class="forte-num">02</div><div class="forte-titulo">Rede Física Consolidada</div><div class="forte-texto">8 unidades em 3 estados mostram que a empresa tem estrutura real — um ativo que o app ainda não sabe aproveitar.</div></div>
+      <div class="forte-card"><div class="forte-num">03</div><div class="forte-titulo">Pedido Digital Funciona</div><div class="forte-texto">O fluxo básico de pedir, pagar e receber confirmação por e-mail está de pé. É o ponto de partida para evoluir.</div></div>
+    </div>
+  </div>
+  <div class="slide-num">07 / 10</div>
+</div>
+
+<!-- SLIDE 8 RECOMENDACOES -->
+<div class="slide">
+  <div class="slide-header"><div class="label">Slide 08 — Recomendações</div><h2>O que precisa mudar — com prazo definido</h2></div>
+  <div class="slide-content">
+    <div class="rec-list">
+      <div class="rec-slide"><div class="rn">Crítico 01 — LGPD</div><div class="rp">App Store diz "nenhum dado coletado" — política do site diz o contrário</div><div class="rs">Atualizar a ficha nas duas lojas imediatamente. Contratar DPO para revisão completa da política.</div><div class="rt">Prazo: Imediato — até 30 dias</div></div>
+      <div class="rec-slide"><div class="rn">Crítico 02 — LGPD</div><div class="rp">Política de 2020 sem revisão e sem cláusula para menores (app classificado como A16)</div><div class="rs">Republicar política com bases legais específicas, prazo de retenção definido e proteção para menores.</div><div class="rt">Prazo: Até 60 dias</div></div>
+      <div class="rec-slide"><div class="rn">Alto 03 — LGPD</div><div class="rp">DPO via Gmail pessoal — sem estrutura, sem prazo, sem protocolo</div><div class="rs">Criar canal corporativo com formulário e confirmação automática de recebimento de solicitações.</div><div class="rt">Prazo: Até 60 dias</div></div>
+      <div class="rec-slide"><div class="rn">Alto 04 — Omnichannel</div><div class="rp">App e lojas físicas não se comunicam</div><div class="rs">Implementar retirada na loja, QR Codes nas unidades e ao menos um benefício exclusivo para usuários do app.</div><div class="rt">Prazo: Até 6 meses</div></div>
+      <div class="rec-slide"><div class="rn">Médio 05 — Técnico</div><div class="rp">Instabilidade, WhatsApp não funcional e autenticação básica</div><div class="rs">Abrir chamado com a Neemo para correção dos bugs e do canal de contato. Avaliar login via Google/Apple e 2FA.</div><div class="rt">Prazo: Até 45 dias</div></div>
+    </div>
+  </div>
+  <div class="slide-num">08 / 10</div>
+</div>
+
+<!-- SLIDE 9 NOTA FINAL -->
+<div class="slide slide-dark">
+  <div class="slide-header" style="background:rgba(255,255,255,0.05);border-bottom:1px solid #333;">
+    <div class="label">Slide 09 — Resultado</div>
+    <h2>Nota Final Consolidada da Auditoria</h2>
+  </div>
+  <div class="final-inner">
+    <div class="final-score-box">
+      <div class="final-num">4.3<span class="final-den">/10</span></div>
+      <div class="final-label">Nota Geral</div>
+      <div class="final-selo">Parcialmente Conforme</div>
+    </div>
+    <div class="final-bars">
+      <div class="bar-big-row"><div class="bar-big-label"><span>Experiência e Omnichannel</span><span>5.0</span></div><div class="bar-big-track"><div class="bar-big-fill" style="width:50%"></div></div></div>
+      <div class="bar-big-row"><div class="bar-big-label"><span>Privacidade e LGPD</span><span>3.4</span></div><div class="bar-big-track"><div class="bar-big-fill" style="width:34%"></div></div></div>
+      <div class="bar-big-row"><div class="bar-big-label"><span>Segurança e Desempenho</span><span>4.2</span></div><div class="bar-big-track"><div class="bar-big-fill" style="width:42%"></div></div></div>
+      <div class="final-risks">2 riscos CRÍTICOS identificados<br>3 riscos ALTOS identificados<br>2 riscos MÉDIOS identificados</div>
+    </div>
+  </div>
+  <div class="slide-num">09 / 10</div>
+</div>
+
+<!-- SLIDE 10 REFLEXAO -->
+<div class="slide">
+  <div class="slide-header"><div class="label">Slide 10 — Reflexão Final</div><h2>Esta empresa respeita o cliente digital de 2026?</h2></div>
+  <div class="reflexao-inner">
+    <div class="question">O app realmente aproxima o físico do digital<br>sem atropelar a privacidade do usuário?</div>
+    <div class="answer">A Sabor do Sul Pizzas tem algo valioso: um produto que as pessoas gostam. A nota 4.4 existe por causa da pizza, não do app. O funcionário que abordamos na loja nem sabia que o app existia — isso resume bem onde a empresa está hoje.<br><br>Do ponto de vista da privacidade, a situação é mais urgente: declarar que nenhum dado é coletado enquanto a política diz o contrário não é um erro pequeno. É exatamente o tipo de contradição que pode chamar a atenção de um fiscal da ANPD. A empresa tem estrutura para corrigir isso — falta apenas prioridade.</div>
+    <div class="frase-final">"Um app que entrega pizza, mas não entrega privacidade."</div>
+    <div class="creditos">AppCheck Consultoria Digital &nbsp;·&nbsp; Guilherme Argollo · João Pedro Menezes · Elô &nbsp;·&nbsp; Abril de 2026</div>
+  </div>
+  <div class="slide-num">10 / 10</div>
+</div>
+
+</body></html>

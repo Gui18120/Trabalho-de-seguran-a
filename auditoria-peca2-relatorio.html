@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Relatório Técnico — Auditoria Sabor do Sul Pizzas</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Arial,sans-serif; background:#ebebeb; color:#111; }
+.page { max-width:800px; margin:40px auto; background:#fff; border:1px solid #ccc; }
+.capa { background:#111; color:#fff; padding:80px 48px; min-height:420px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
+.capa .logo { font-size:24px; font-weight:900; letter-spacing:4px; text-transform:uppercase; margin-bottom:4px; }
+.capa .logo-sub { font-size:11px; color:#888; letter-spacing:2px; text-transform:uppercase; margin-bottom:52px; }
+.capa h1 { font-size:30px; font-weight:800; line-height:1.2; margin-bottom:10px; }
+.capa .empresa { font-size:18px; color:#aaa; margin-bottom:52px; font-weight:300; letter-spacing:1px; }
+.capa .divider-line { width:40px; height:2px; background:#fff; margin:20px auto; opacity:0.3; }
+.capa .meta { font-size:12px; color:#777; line-height:2.2; letter-spacing:1px; }
+.body { padding:48px; }
+.section { margin-bottom:44px; }
+.section-label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#999; margin-bottom:8px; }
+.section h2 { font-size:20px; font-weight:800; margin-bottom:16px; border-bottom:1.5px solid #111; padding-bottom:10px; }
+.section h3 { font-size:15px; font-weight:700; margin-bottom:10px; color:#111; margin-top:24px; text-transform:uppercase; letter-spacing:1px; }
+.section p { font-size:14px; color:#444; line-height:1.9; margin-bottom:12px; }
+.divider { height:1px; background:#eee; margin:40px 0; }
+.info-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:16px; }
+.info-item { background:#f7f7f7; padding:14px 16px; border-left:2px solid #111; }
+.info-item strong { display:block; font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#999; margin-bottom:4px; }
+.info-item span { font-size:13px; color:#333; }
+table { width:100%; border-collapse:collapse; margin-top:16px; font-size:13px; }
+thead { background:#111; color:#fff; }
+thead th { padding:12px 14px; text-align:left; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:1px; }
+thead th:last-child { text-align:center; width:60px; }
+tbody td { padding:11px 14px; border-bottom:1px solid #eee; color:#444; vertical-align:top; line-height:1.5; }
+tbody td:last-child { text-align:center; font-weight:800; }
+tbody tr:nth-child(even) { background:#fafafa; }
+.media-row td { background:#f0f0f0; font-weight:700; border-top:2px solid #111; }
+.nota-m { color:#555; }
+.nota-b { color:#111; }
+.matrix { border-collapse:collapse; width:100%; font-size:11px; margin-top:12px; }
+.matrix th,.matrix td { border:1px solid #ccc; padding:10px; text-align:center; vertical-align:middle; }
+.matrix th { background:#111; color:#fff; font-size:10px; text-transform:uppercase; letter-spacing:1px; }
+.risk-critico { background:#111; color:#fff; padding:3px 7px; font-size:10px; font-weight:700; display:inline-block; margin:2px; letter-spacing:1px; }
+.risk-alto { background:#555; color:#fff; padding:3px 7px; font-size:10px; font-weight:700; display:inline-block; margin:2px; letter-spacing:1px; }
+.risk-medio { background:#ccc; color:#111; padding:3px 7px; font-size:10px; font-weight:700; display:inline-block; margin:2px; letter-spacing:1px; }
+.rec-item { border-left:2px solid #111; background:#f7f7f7; padding:16px 20px; margin-bottom:10px; }
+.rec-num { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#999; margin-bottom:5px; }
+.rec-prob { font-size:14px; font-weight:700; margin-bottom:5px; }
+.rec-sol { font-size:13px; color:#555; line-height:1.6; margin-bottom:4px; }
+.rec-prazo { font-size:11px; font-weight:700; color:#111; letter-spacing:1px; }
+.evidence-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+.evidence-item { border:1px solid #eee; padding:14px; }
+.ev-type { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#999; margin-bottom:6px; }
+.ev-desc { font-size:13px; color:#444; line-height:1.5; }
+.ev-placeholder { background:#f7f7f7; border:1px dashed #ccc; height:80px; display:flex; align-items:center; justify-content:center; font-size:11px; color:#bbb; margin-top:8px; letter-spacing:1px; }
+.alert-box { border-left:2px solid #111; background:#f7f7f7; padding:14px 18px; margin:16px 0; font-size:13px; color:#444; line-height:1.7; }
+.footer { background:#111; padding:24px 48px; color:#fff; display:flex; justify-content:space-between; align-items:center; }
+.footer p { font-size:12px; color:#777; }
+.footer strong { color:#fff; letter-spacing:1px; }
+@media print { body{background:#fff} .page{margin:0;border:none} .capa{page-break-after:always} }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="capa">
+    <div class="logo">AppCheck</div>
+    <div class="logo-sub">Consultoria Digital</div>
+    <h1>Relatório Técnico de<br>Auditoria Digital</h1>
+    <div class="divider-line"></div>
+    <div class="empresa">Sabor do Sul Pizzas</div>
+    <div class="meta">
+      Versão 1.0 &nbsp;·&nbsp; Abril de 2026<br>
+      Guilherme Argollo — Experiência e Omnichannel<br>
+      João Pedro Menezes — Privacidade e LGPD<br>
+      Elô — Segurança e Desempenho Técnico
+    </div>
+  </div>
+  <div class="body">
+
+    <div class="section">
+      <div class="section-label">Seção 1</div>
+      <h2>Metodologia</h2>
+      <p>Nossa auditoria foi conduzida entre os dias 14 e 22 de abril de 2026. A escolha da Sabor do Sul Pizzas veio de um critério simples: a empresa tem app, tem lojas físicas acessíveis e lida com dados pessoais de clientes — atendendo os três requisitos da atividade. Também nos pareceu interessante auditar uma rede de alimentação regional, um segmento que costuma ter presença digital ainda em desenvolvimento.</p>
+      <p>Dividimos a auditoria em três frentes: Guilherme Argollo ficou responsável pela experiência do usuário e pela integração com a loja física; João Pedro Menezes ficou com toda a parte de LGPD e privacidade; e Elô cuidou da análise técnica, de segurança e desempenho. Todos participamos da visita de campo e do teste do app.</p>
+      <div class="info-grid">
+        <div class="info-item"><strong>Empresa Auditada</strong><span>Sabor do Sul Pizzas</span></div>
+        <div class="info-item"><strong>Período</strong><span>14 a 22 de abril de 2026</span></div>
+        <div class="info-item"><strong>Plataformas Testadas</strong><span>iOS (App Store) e Android (Google Play)</span></div>
+        <div class="info-item"><strong>Versão do App</strong><span>10.9.8 — plataforma terceirizada Neemo</span></div>
+        <div class="info-item"><strong>Unidades Físicas</strong><span>8 unidades em BA, AL e RS</span></div>
+        <div class="info-item"><strong>Avaliações Lidas</strong><span>78 na App Store + 20 no Google Play</span></div>
+        <div class="info-item"><strong>Documentos Analisados</strong><span>Política de privacidade do site oficial</span></div>
+        <div class="info-item"><strong>Persona Utilizada</strong><span>Jovem de 22 anos, primeiro pedido pelo app</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Seção 2 — Bloco A</div>
+      <h2>Experiência e Integração Omnichannel</h2>
+      <p>Análise conduzida por Guilherme Argollo. O foco foi entender como o app se comporta na prática e se ele realmente conversa com as lojas físicas da rede.</p>
+      <table>
+        <thead><tr><th>Critério</th><th>O que observamos</th><th>Nota</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Download e instalação</strong></td><td>Encontramos o app facilmente na App Store. Instalação rápida, 29.1 MB, gratuito. A nota de 4.4/5 com 78 avaliações é boa — embora os elogios sejam sobre a pizza, não sobre o app.</td><td class="nota-m">7/10</td></tr>
+          <tr><td><strong>Integração com a loja física</strong></td><td>Durante a visita à unidade, não encontramos nenhum QR Code, banner ou totem mencionando o app. O funcionário disse que raramente os clientes usavam o aplicativo.</td><td class="nota-b">3/10</td></tr>
+          <tr><td><strong>Usabilidade e design</strong></td><td>A interface é funcional e direta — dá pra fazer o pedido sem dificuldade. Design básico. Tivemos dois momentos de lentidão durante o teste.</td><td class="nota-m">5/10</td></tr>
+          <tr><td><strong>Funcionalidades exclusivas</strong></td><td>O app se limita a fazer pedidos e mandar notificação por e-mail. Sem programa de fidelidade, rastreio em tempo real, chat ou cupons exclusivos.</td><td class="nota-b">4/10</td></tr>
+          <tr><td><strong>Custo-benefício</strong></td><td>É gratuito, o que ajuda. Mas tentamos ligar para o WhatsApp exibido no app e não obtivemos resposta. Usuários relatam erros na montagem dos pedidos.</td><td class="nota-m">6/10</td></tr>
+          <tr class="media-row"><td colspan="2"><strong>Média do Bloco A</strong></td><td>5.0/10</td></tr>
+        </tbody>
+      </table>
+      <h3>Nossa análise — Bloco A</h3>
+      <p>O que mais nos chamou atenção durante a visita foi o desconhecimento do próprio funcionário sobre o app. Isso não é um detalhe pequeno: se a equipe interna não usa nem divulga o aplicativo, o cliente também não vai usar. A integração entre o canal digital e a loja física praticamente não existe — não há QR Code, não há promoção exclusiva, não há retirada no balcão para quem pediu pelo app. O digital e o físico funcionam como dois mundos separados.</p>
+      <p>Do ponto de vista do usuário, o app cumpre o básico: dá pra pedir. Mas nada além disso justifica instalá-lo. Sem benefício exclusivo, sem rastreio, sem chat — qualquer pessoa prefere pedir pelo site ou pelo telefone. E quando o telefone não funciona, a experiência desmorona.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Seção 3 — Bloco B</div>
+      <h2>Privacidade e Conformidade com a LGPD</h2>
+      <p>Análise conduzida por João Pedro Menezes. Aqui estão os achados mais preocupantes de toda a auditoria — e os que mais expõem a empresa a risco real.</p>
+      <table>
+        <thead><tr><th>Critério</th><th>O que observamos</th><th>Nota</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Política de privacidade</strong></td><td>Existe e está acessível, mas a última atualização foi em outubro de 2020 — mais de cinco anos. Hospedada em um link do Google Docs, o que já é incomum para uma rede com 8 unidades.</td><td class="nota-b">4/10</td></tr>
+          <tr><td><strong>Encarregado de dados (DPO)</strong></td><td>O contato indicado é sabordosulpizzas@gmail.com — endereço Gmail sem identidade corporativa, sem prazo de resposta e sem sistema de protocolo. Não atende ao art. 41 da LGPD.</td><td class="nota-b">3/10</td></tr>
+          <tr><td><strong>Minimização de dados</strong></td><td>A política lista coleta de nome, e-mail, telefone, endereço, dados demográficos e métricas de navegação. Não fica claro por que todos esses dados são necessários para pedir uma pizza.</td><td class="nota-b">4/10</td></tr>
+          <tr><td><strong>Consentimento</strong></td><td>A política menciona marketing "quando você nos der consentimento", mas durante o cadastro não encontramos opt-in separado e claro. O consentimento parece estar embutido nos termos gerais.</td><td class="nota-b">4/10</td></tr>
+          <tr><td><strong>Permissões do app</strong></td><td>Achado mais grave: App Store afirma que "nenhum dado é coletado". Ao mesmo tempo, a política do site lista Facebook Pixel, Google Analytics, Google AdWords e Google Tag Manager. As duas informações não podem ser verdadeiras ao mesmo tempo.</td><td class="nota-b">2/10</td></tr>
+          <tr><td><strong>Direitos do titular</strong></td><td>A política menciona os direitos de acesso, correção e exclusão. Porém, o único canal disponível é o e-mail Gmail, sem formulário, sem prazo e sem protocolo.</td><td class="nota-m">5/10</td></tr>
+          <tr><td><strong>Cookies e rastreadores</strong></td><td>O site possui aviso de cookies, mas sem opção real de recusa por categoria. O usuário ou aceita tudo ou não usa o site.</td><td class="nota-b">3/10</td></tr>
+          <tr><td><strong>Bases legais</strong></td><td>A política faz referência vaga a "legislação vigente" sem especificar qual base legal do art. 7 da LGPD justifica cada tipo de tratamento.</td><td class="nota-b">3/10</td></tr>
+          <tr><td><strong>Dados de crianças/adolescentes</strong></td><td>Nenhuma cláusula sobre dados de menores. Especialmente preocupante porque a classificação etária do app é A16 — referências a álcool, tabaco ou drogas em uma pizzaria. Algo que por si só levantou nossas dúvidas.</td><td class="nota-b">2/10</td></tr>
+          <tr><td><strong>Transparência sobre compartilhamento</strong></td><td>A política menciona compartilhamento com "parceiros comerciais de confiança" e transferências internacionais de dados. Não diz quem são esses parceiros nem para qual país os dados podem ir.</td><td class="nota-b">4/10</td></tr>
+          <tr class="media-row"><td colspan="2"><strong>Média do Bloco B</strong></td><td>3.4/10</td></tr>
+        </tbody>
+      </table>
+      <h3>Nossa análise — Bloco B</h3>
+      <p>A contradição entre a declaração da App Store e a política de privacidade é, sem dúvida, o achado mais grave de toda a auditoria. Não é possível que "nenhum dado seja coletado" e, ao mesmo tempo, a empresa use Facebook Pixel, Google Analytics e Google AdWords. Um desses documentos está errado — e os dois são públicos, acessíveis a qualquer usuário ou fiscal.</p>
+      <p>O que nos preocupou igualmente foi a política de 2020. Naquele ano, a LGPD ainda estava em fase de implementação. De lá pra cá, as obrigações ficaram mais claras, as multas começaram a ser aplicadas — mas a política da empresa ficou congelada naquele momento, como se o tempo não tivesse passado.</p>
+      <p>A classificação A16 do app por referências a álcool, tabaco ou drogas também nos surpreendeu — e não encontramos nenhuma justificativa para isso dentro do aplicativo. Um app de pizzaria comum não deveria ter essa classificação.</p>
+      <h3>Matriz de Risco LGPD</h3>
+      <table class="matrix">
+        <thead><tr><th></th><th>Impacto Baixo</th><th>Impacto Médio</th><th>Impacto Alto</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Prob. Alta</strong></td><td><span class="risk-medio">Cookies sem recusa</span></td><td><span class="risk-alto">Política desatualizada</span> <span class="risk-alto">DPO via Gmail</span> <span class="risk-alto">Bases vagas</span> <span class="risk-alto">Retenção indefinida</span></td><td><span class="risk-critico">Contradição App Store vs. Política</span></td></tr>
+          <tr><td><strong>Prob. Média</strong></td><td></td><td></td><td><span class="risk-critico">Sem proteção para menores (A16)</span></td></tr>
+          <tr><td><strong>Prob. Baixa</strong></td><td></td><td><span class="risk-medio">Transfer. internacionais</span></td><td></td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px;font-size:11px;color:#888;letter-spacing:1px;">
+        <span class="risk-critico">CRÍTICO</span> Risco de sanção ANPD &nbsp;
+        <span class="risk-alto">ALTO</span> Correção imediata &nbsp;
+        <span class="risk-medio">MÉDIO</span> Melhoria recomendada
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Seção 4 — Bloco C</div>
+      <h2>Segurança e Desempenho Técnico</h2>
+      <p>Análise conduzida por Elô. O foco foi entender como o app se comporta tecnicamente — autenticação, estabilidade, velocidade e o que os usuários relatam sobre falhas.</p>
+      <table>
+        <thead><tr><th>Critério</th><th>O que observamos</th><th>Nota</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Autenticação</strong></td><td>Login com e-mail e senha. Sem autenticação em dois fatores, sem login via Google ou Apple. Não identificamos política de força de senha durante o cadastro.</td><td class="nota-m">5/10</td></tr>
+          <tr><td><strong>Estabilidade</strong></td><td>Durante nossos testes, o app travou uma vez ao carregar o cardápio. Nas avaliações, relatos frequentes de fechamentos inesperados em iOS e Android.</td><td class="nota-b">4/10</td></tr>
+          <tr><td><strong>Desempenho</strong></td><td>O carregamento inicial é aceitável, mas o cardápio demora. Usuários relatam que o app trava na hora de finalizar o pedido — o pior momento possível.</td><td class="nota-b">4/10</td></tr>
+          <tr><td><strong>Atualizações</strong></td><td>A nota da última versão é "Correção de push!" — sem nenhuma descrição do que foi corrigido ou do que mudou para o usuário.</td><td class="nota-b">4/10</td></tr>
+          <tr><td><strong>Avaliações técnicas</strong></td><td>Problemas recorrentes: WhatsApp não responde, pedidos com sabores errados, espera acima de 2h sem atualização de status.</td><td class="nota-b">4/10</td></tr>
+          <tr class="media-row"><td colspan="2"><strong>Média do Bloco C</strong></td><td>4.2/10</td></tr>
+        </tbody>
+      </table>
+      <h3>Nossa análise — Bloco C</h3>
+      <p>Um detalhe importante: o app é desenvolvido e mantido pela plataforma terceirizada Neemo. Isso significa que a Sabor do Sul Pizzas não tem controle direto sobre o código — quando algo precisa ser corrigido, depende do fornecedor. Isso ajuda a explicar a lentidão nas correções e a falta de comunicação sobre atualizações.</p>
+      <p>A ausência de autenticação em dois fatores deixa as contas dos usuários vulneráveis. O que mais incomodou foi o WhatsApp não funcional. Quando um pedido dá errado, o usuário tenta entrar em contato e não consegue — isso não é apenas um problema técnico, é um problema de confiança.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Seção 5</div>
+      <h2>Recomendações Acionáveis</h2>
+      <div class="rec-item">
+        <div class="rec-num">Recomendação 01 — Crítico</div>
+        <div class="rec-prob">App Store diz "nenhum dado coletado" — política diz o contrário</div>
+        <div class="rec-sol">Atualizar imediatamente a ficha nas duas lojas de aplicativos para refletir os dados realmente coletados. Contratar DPO profissional para revisão completa da política.</div>
+        <div class="rec-prazo">Prazo: Imediato — até 30 dias</div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">Recomendação 02 — Crítico</div>
+        <div class="rec-prob">Política de 2020 sem revisão e sem cláusula para menores</div>
+        <div class="rec-sol">Revisar e republicar a política com bases legais específicas por tipo de dado, prazo de retenção definido e cláusula dedicada ao tratamento de dados de menores (art. 14 da LGPD).</div>
+        <div class="rec-prazo">Prazo: Até 60 dias</div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">Recomendação 03 — Alto</div>
+        <div class="rec-prob">Canal do DPO é um Gmail pessoal sem estrutura de atendimento</div>
+        <div class="rec-sol">Criar e-mail corporativo dedicado (ex: privacidade@sabordosulpizzas.com.br), formulário de solicitação de direitos e prazo de resposta publicado (15 dias úteis).</div>
+        <div class="rec-prazo">Prazo: Até 60 dias</div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">Recomendação 04 — Alto</div>
+        <div class="rec-prob">App e lojas físicas funcionam como canais completamente separados</div>
+        <div class="rec-sol">Implementar pelo menos uma funcionalidade que conecte o digital ao físico: retirada na loja, QR Codes visíveis nas unidades ou cupom exclusivo para usuários do app.</div>
+        <div class="rec-prazo">Prazo: Até 6 meses</div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">Recomendação 05 — Médio</div>
+        <div class="rec-prob">Instabilidade técnica, WhatsApp não funcional e autenticação básica</div>
+        <div class="rec-sol">Abrir chamado com a Neemo para correção dos bugs e do canal de contato. Avaliar adição de login via Google/Apple e autenticação em dois fatores.</div>
+        <div class="rec-prazo">Prazo: Até 45 dias</div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-num">Recomendação 06 — Médio</div>
+        <div class="rec-prob">Notas de atualização sem nenhuma informação útil ao usuário</div>
+        <div class="rec-sol">Adotar política de notas de versão detalhadas a cada atualização, informando correções de bugs, melhorias de segurança e mudanças que afetam os dados dos usuários.</div>
+        <div class="rec-prazo">Prazo: Na próxima atualização</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-label">Seção 6</div>
+      <h2>Evidências Coletadas</h2>
+      <div class="evidence-grid">
+        <div class="evidence-item"><div class="ev-type">Evidência 01 — App Store</div><div class="ev-desc">Print da ficha afirmando "Nenhum dado coletado" — contradição com a política de privacidade do site.</div><div class="ev-placeholder">[Inserir print]</div></div>
+        <div class="evidence-item"><div class="ev-type">Evidência 02 — Política de Privacidade</div><div class="ev-desc">Print listando coleta de dados e rastreadores. Última atualização: outubro de 2020.</div><div class="ev-placeholder">[Inserir print]</div></div>
+        <div class="evidence-item"><div class="ev-type">Evidência 03 — Tela de Cadastro</div><div class="ev-desc">Print da tela de cadastro. Tempo cronometrado: aproximadamente 2 minutos e 50 segundos.</div><div class="ev-placeholder">[Inserir print]</div></div>
+        <div class="evidence-item"><div class="ev-type">Evidência 04 — Avaliações de Usuários</div><div class="ev-desc">Prints de avaliações negativas: WhatsApp sem resposta, pedidos errados, atrasos acima de 2h.</div><div class="ev-placeholder">[Inserir print]</div></div>
+        <div class="evidence-item"><div class="ev-type">Evidência 05 — Nota de Versão</div><div class="ev-desc">Print da versão 10.9.8 com apenas "Correção de push!" — sem transparência técnica.</div><div class="ev-placeholder">[Inserir print]</div></div>
+        <div class="evidence-item"><div class="ev-type">Evidência 06 — Visita de Campo</div><div class="ev-desc">Fotos da unidade visitada: ausência de QR Code ou comunicação sobre o app. Anotações da conversa com o funcionário.</div><div class="ev-placeholder">[Inserir fotos]</div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <div><strong>AppCheck Consultoria Digital</strong><p>Relatório Técnico Confidencial · Abril de 2026</p></div>
+    <p style="color:#fff;font-weight:700;font-size:13px;">Nota Geral: 4.3 / 10</p>
+  </div>
+</div>
+</body></html>
